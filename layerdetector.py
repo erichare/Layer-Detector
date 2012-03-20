@@ -37,6 +37,23 @@ cv.Canny(gray, edge, threshold, threshold * 3, 3)
 cv.Copy(im, col_edge, edge)
 
 # show the im
-cv.ShowImage(win_name, col_edge)
+cv.ShowImage("Original", im)
+
+cv.WaitKey(0)
+cv.DestroyWindow("Original")
+
+lst = []
+x = edge.width / 4
+for i in range(edge.height):
+	val = cv.Get2D(edge, i, x)[0]
+	if val > 0:
+		lst.append((x, i))
+
+for i in lst:
+	cv.Circle(edge, i, 3, (255, 255, 255), thickness = -1)
+	font = cv.InitFont(cv.CV_FONT_HERSHEY_SIMPLEX, 0.3, 0.3)
+	cv.PutText(edge, str(i[1]), i, font, (255, 255, 255))
+
+cv.ShowImage(win_name, edge)
 
 cv.WaitKey(0)
