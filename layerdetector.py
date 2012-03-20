@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 import sys
-import cv2.cv as cv
+import cv
 
 # some definitions
 win_name = "Edge"
